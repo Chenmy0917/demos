@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>滚动轮播</title>
+  <style>
+ 
+    ul{
+      margin: 0;
+      padding: 0;
+      list-style: none;
+ 
+    }
+    input{
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top:28%;
+    left:60%;
+    background-color:#fff;
+    border:solid 1px #fff;
+  }
+ 
+    .sliderWrap{
+      width: 600px;
+      height: 500px;
+      overflow: hidden;
+      margin: 0 auto;
+    }
+    .sliderWrap ul{
+      position: relative;
+      width: 100%;
+      transition: left .5s ease;
+      left: 0;
+    }
+    .sliderWrap li{
+      position: relative;
+      float: left;
+    }
+    .sliderWrap ul li img{
+      width: 100%;
+      height:100%;
+    }
+  </style>
+</head>
+<body>
+<div class="sliderWrap">
+  <ul id="slider">
+    <li><img src="images/banner_bg.gif" alt=""></li>
+    <li><img src="images/banner_2.png" alt=""></li>
+    <li><img src="images/banner_3.png" alt=""></li>
+  <!--   <li><img src="images/sh_4.gif" alt=""></li> -->
+  </ul>
+</div>
+<input type="button" value=">" id="next"/>
+<script>
+  /**
+   * 图片轮播
+   * @type {Element}
+   */
+  var btn = document.getElementById("next");
+  var dom = document.getElementById("slider");
+  var liArr = dom.getElementsByTagName("li");
+ 
+  var curWidth = 200;
+  var ulWidth = curWidth * liArr.length;
+  var show = [];
+  var circle = [];
+ 
+  var goAway = "translate(-" + curWidth +"px, 0) translateZ(0px)";
+  var goIn = "translate(0, 0) translateZ(0px)";
+  var goPre = "translate(" + curWidth +"px, 0) translateZ(0px)";
+ 
+  //保证所有li在ul中能在一行内放下
+  dom.style.width = ulWidth + "px";
+ 
+  for(var i = 0, len = liArr.length; i < len; i++){
+    var curLi = liArr[i];
+ 
+    curLi.setAttribute("data-index", i);
+    curLi.style.width = curWidth + "px";
+ 
+    if(i == 0){
+      curLi.style.left = 0;
+      show.push(curLi);
+    }else{
+      curLi.style.left = - curWidth * i + "px";
+      if(i > 1){
+        translate(curLi, goAway, '')
+        circle.push(curLi);
+      }else{
+        show.push(curLi);
+        translate(curLi, goPre, '');
+      }
+    }
+ 
+ 
+  }
+ 
+  circle.reverse();
+ 
+  btn.onclick = function(){
+    //已展示的图片滚粗
+    var showFirst = show.shift();
+    translate(showFirst, goAway, "300ms");
+ 
+    //正在展示的图片
+    translate(show[0], goIn, "300ms");
+    circle.splice(0, 0, showFirst);
+ 
+    //准备好下一个将要展示的图片
+    var nextPre = circle.pop();
+    translate(nextPre, goPre, "0ms");
+    show.push(nextPre);
+ 
+  };
+ 
+  function translate(dom, goType, time){
+    dom.style.transform =
+        dom.style.webkitTransform =
+            dom.style.mozTransform =
+                dom.style.msTransform =
+                    dom.style.oTransform = goType;
+ 
+    dom.style.transitionDuration =
+        dom.style.webkitTransitionDuration =
+            dom.style.mozTransitionDuration =
+                dom.style.msTransitionDuration =
+                    dom.oTransitionDuration = time;
+ 
+ 
+  }
+ 
+</script>
+</body>
+</html>

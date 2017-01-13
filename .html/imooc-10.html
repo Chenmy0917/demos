@@ -1,0 +1,182 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+    body {
+        font-family: "Microsoft Yahei", "arial", "verdana";
+        font-size: 1.2em;
+        margin-left: 25%;
+        margin-top: 10%;
+    }
+    
+    .adTabs {
+        filter: drop-shadow(10px 10px 10px #333);
+    }
+    
+    ul {
+        margin: 0;
+        padding: 0;
+    }
+    
+    li {
+        border: 2px solid grey;
+        border-bottom: 2px solid grey;
+        display: block;
+        float: left;
+        list-style: none;
+        margin-left: 20px;
+        padding: 10px 25px;
+    }
+    
+    li:nth-child(1) {
+        margin-left: 0;
+        border-bottom: 2px solid white;
+    }
+    
+    .ad {
+        width: 332px;
+        border: 2px solid grey;
+        text-align: center;
+        margin-top: -3px;
+    }
+    
+    li:hover {
+        background-color: black;
+        color: white;
+    }
+    
+    #ad1 {
+        display: block;
+    }
+    
+    #ad2,
+    #ad3 {
+        display: none;
+    }
+    </style>
+</head>
+
+<body>
+    <h2>JS Display None/block选项卡</h2>
+    <h5>──慕课网JavaScript进阶篇 <a href="http://www.imooc.com/code/1912" target="_blank">10-1编程挑战</a></h5>
+    <div class="adTabs">
+        <ul>
+            <li id="li1" onmouseover="showAd1()" onmouseout="bgBkAd1()">房产</li>
+            <li id="li2" onmouseover="showAd2()" onmouseout="bgBkAd2()">家居</li>
+            <li id="li3" onmouseover="showAd3()" onmouseout="bgBkAd3()">二手房</li>
+        </ul>
+        <br>
+        <br>
+        <div class="content">
+            <div class="ad" id="ad1">
+                <br>275万购昌平邻铁三居
+                <br>总价20万买一居
+                <br>200万内购五环三居
+                <br>140万安家东三环
+                <br>北京首现零首付楼盘
+                <br>53万购东5环50平
+                <br>京楼盘直降5000
+                <br>中信府公园楼王现房
+                <br>
+                <br>
+            </div>
+            <div class="ad" id="ad2">
+                <br>40平出租屋大改造
+                <br>美少女的混搭小窝
+                <br>经典清新简欧爱家
+                <br>90平老房焕发新生
+                <br>新中式的酷色温情
+                <br>66平撞色活泼家居
+                <br>瓷砖就像选好老婆
+                <br>卫生间烟道的设计
+                <br>
+                <br>
+            </div>
+            <div class="ad" id="ad3">
+                <br>通州豪华3居260万
+                <br>二环稀缺2居250w甩
+                <br>西3环通透2居290万
+                <br>130万2居限量抢购
+                <br>黄城根小学学区仅260万
+                <br>121平70万抛
+                <br>独家别墅280万
+                <br>苏州桥2居优惠价248万
+                <br>
+                <br>
+            </div>
+        </div>
+        <script type="text/javascript">
+        var ad1Div = document.getElementById("ad1");
+        var ad2Div = document.getElementById("ad2");
+        var ad3Div = document.getElementById("ad3");
+        var li1Ele = document.getElementById("li1");
+        var li2Ele = document.getElementById("li2");
+        var li3Ele = document.getElementById("li3");
+
+        function showAd1() {
+            ad1Div.style.display = "block";
+            ad2Div.style.display = "none";
+            ad3Div.style.display = "none";
+            ad1Div.style.backgroundColor = "black";
+            ad1Div.style.color = "white";
+            ad1Div.style.border = "2px solid orange";
+            li1Ele.style.border = "2px solid orange";
+            li1Ele.style.borderBottom = "3px solid black";
+        }
+
+        function bgBkAd1() {
+            ad1Div.style.backgroundColor = "white";
+            ad1Div.style.color = "black";
+            ad1Div.style.border = "2px solid grey";
+            li1Ele.style.border = "2px solid grey";
+            li1Ele.style.borderBottom = "3px solid white";
+        }
+
+        function showAd2() {
+            ad1Div.style.display = "none";
+            ad2Div.style.display = "block";
+            ad3Div.style.display = "none";
+            ad2Div.style.backgroundColor = "black";
+            ad2Div.style.color = "white";
+            ad2Div.style.border = "2px solid orange";
+            li2Ele.style.border = "2px solid orange";
+            li2Ele.style.borderBottom = "3px solid black";
+        }
+
+
+        function bgBkAd2() {
+            ad2Div.style.backgroundColor = "white";
+            ad2Div.style.color = "black";
+            ad2Div.style.border = "2px solid grey";
+            li2Ele.style.border = "2px solid grey";
+
+        }
+
+        function showAd3() {
+            ad1Div.style.display = "none";
+            ad2Div.style.display = "none";
+            ad3Div.style.display = "block";
+            ad3Div.style.backgroundColor = "black";
+            ad3Div.style.color = "white";
+            ad3Div.style.border = "2px solid orange";
+            li3Ele.style.border = "2px solid orange";
+            li3Ele.style.borderBottom = "3px solid black";
+        }
+
+
+        function bgBkAd3() {
+            ad3Div.style.backgroundColor = "white";
+            ad3Div.style.color = "black";
+            ad3Div.style.border = "2px solid grey";
+            li3Ele.style.border = "2px solid grey";
+
+        }
+        </script>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<mate charset="utf-8">
+	<title>demo</title>
+	<style>
+		ol{
+			float:left;
+			display:inline-block;
+			position:absolute;
+			top:22em;
+			left:40em;
+			height:10px;
+		}
+		ol li{
+			height:0.625em;
+			width:0.625em;
+			background:#909090;
+			border-radius:50%;
+			float:left;
+			margin-left: 0.625em;
+			cursor:pointer;
+			list-style: none;
+		}
+		.wrap{
+			height:23.6875em;
+			margin:0;
+			padding:0;
+			font-family:Microsoft Yahei;
+			overflow: hidden;
+			position: relative;
+		}
+		.wrap img{
+			width: 100%;
+		}
+		#div1{
+			position: absolute;
+			margin: 0;
+			padding:0;
+			display:block;
+		}
+		
+		#div2{
+			position: absolute;
+			margin:0;
+			padding:0;
+			display:none;
+		}
+		#div3{
+			position: absolute;
+			margin:0;
+			padding:0;
+			display:none;
+		}
+	</style>
+</head>
+<body>
+<div class="wrap" id="wrap">
+<div id="pic">
+<ul style="list-style:none;">
+<li><img src="images/banner_bg.gif"></li>
+<li><img src="images/banner_2.png"></li>
+<li><img src="images/banner_3.png"></li>
+</ul>
+</div>
+<ol id="list">
+	<li style="background:red;"></li>
+	<li></li>
+	<li></li>
+</ol>
+</div>
+
+<script type="text/javascript">
+	window.onload = function(){
+		var wrap = document.getElementById("wrap");
+		var pic = document.getElementById("pic").getElementsByTagName("li");
+		var list = document.getElementById("list").getElementsByTagName("li");
+		var index = 0;
+		var timer = null;		
+		timer = setInterval(autoPlay,2000);
+		wrap.onmouseover = function(){
+			clearInterval(timer);
+		}
+		wrap.onmouseout = function(){
+			timer = setInterval(autoPlay,2000);
+		}
+		// for(var i = 0;i < list.length; i ++){
+		// 	list[i].onmouseover = function(){
+		// 		clearInterval(timer);
+		// 		index = this.innerText - 1;
+		// 		changePic(index);
+		// 	};
+		// };
+
+		function autoPlay(){
+			if(++index >= 3)
+				index = 0;
+			changePic(index);
+		}
+
+		function changePic(curIndex){
+			for(var i = 0;i < 3;++ i){
+				pic[i].style.display = "none";
+				list[i].style.background = "#909090";
+			}
+			pic[curIndex].style.display = "block";
+			list[curIndex].style.background = "red";
+		}		
+	};
+	// var d1=document.getElementById("div1");
+	// var d2=document.getElementById("div2");
+	// var d3=document.getElementById("div3");
+	// var li1=document.getElementById("li1");
+	// var li2=document.getElementById("li2");
+	// var li3=document.getElementById("li3");
+
+	// function showDiv1(){
+	// 	d1.style.display="block";
+	// 	d2.style.display="none";
+	// 	d3.style.display="none";
+	// 	li1.style.background="red";
+	// }
+	// function showDiv2(){
+	// 	d2.style.display="block";
+	// 	d1.style.display="none";
+	// 	d3.style.display="none";
+	// 	li2.style.background="red";
+	// }
+	// function showDiv3(){
+	// 	d3.style.display="block";
+	// 	d2.style.display="none";
+	// 	d1.style.display="none";
+	// 	li3.style.background="red";
+	// }
+	// function hiddenDiv1(){
+	// 	li1.style.background="#909090";
+	// }
+	// function hiddenDiv2(){
+	// 	li2.style.background="#909090";
+	// }
+	// function hiddenDiv3(){
+	// 	li3.style.background="#909090";
+	// }
+
+	
+
+</script>
+</body>
+</html>
