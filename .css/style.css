@@ -1,0 +1,106 @@
+/*所有的face结尾的选择器都是为圆点排列设置样式*/
+.first-face {
+  display: flex;
+  justify-content: center;/*项目在主轴上的对齐方式*/
+  align-items: center;/*项目在交叉轴上的对齐方式*/
+}
+
+.second-face {
+  display: flex;
+  justify-content: space-between;，/*类似word了的分散对齐*/
+}
+
+.second-face .pip:nth-of-type(2) {
+  align-self: flex-end;/*允许项目有自己的对齐方式，可以覆盖align-items*/
+}
+
+.third-face {
+  display: flex;
+  justify-content: space-between;
+}
+  
+.third-face .pip:nth-of-type(2) {
+  align-self: center;
+}
+
+.third-face .pip:nth-of-type(3) {
+  align-self: flex-end;
+}
+
+.fourth-face, .sixth-face {
+  display: flex;
+  justify-content: space-between;
+}
+
+.fourth-face .column, .sixth-face .column {
+  display: flex;
+  flex-direction: column;/*主轴的排列方向*/
+  justify-content: space-between;
+}
+
+.fifth-face {
+  display: flex;
+  justify-content: space-between;
+}
+  
+.fifth-face .column {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+  
+.fifth-face .column:nth-of-type(2) /*中间圆点的样式*/
+  justify-content: center;
+}
+
+/* OTHER STYLES */
+
+* {
+  box-sizing: border-box;/*当你设置一个元素为 box-sizing: border-box; 时，此元素的内边距和边框不再会增加它的宽度。*/
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /*vertical-align: middle;/*设置元素的垂直对齐方式*/
+  flex-wrap: wrap;/*决定项目在轴线上排列排不下的时候如何换行*/
+  align-content: center;/*决定 多根轴线的对齐方式*/
+  font-family: 'Open Sans', sans-serif;
+  
+  background: linear-gradient(top, #222, #333);/*top设置顶部为渐变起点的纵坐标值,从#222渐变到#333*/
+}
+
+[class$="face"] {/*为所有后缀为face的class选择器设置以下样式*/
+  margin: 16px;
+  padding: 4px;
+  
+  background-color: #e7e7e7;
+  width: 104px;
+  height: 104px;
+  object-fit: contain;/*CSS3新属性，详见简书*/
+  
+  box-shadow:
+    inset 0 5px white, 
+    inset 0 -5px #bbb,
+    inset 5px 0 #d7d7d7, 
+    inset -5px 0 #d7d7d7;
+  
+  border-radius: 10%;
+}/*向框添加阴影，详见http://www.w3school.com.cn/cssref/pr_box-shadow.asp*/
+
+/*为圆点设置样式*/
+.pip {
+  display: block;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  margin: 4px;
+
+  background-color: #333;
+  box-shadow: inset 0 3px #111, inset 0 -3px #555;
+}
